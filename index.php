@@ -36,14 +36,16 @@ try{
 <script type="text/javascript">
 $(document).ready(function() {
 	var at = '<?php if ($facebook->access_token) { echo $facebook->access_token; } ?>';
-	if(at != ''){
-		$.post('build.php', {'access_token':at});		
-		var t = setTimeout("publish()",1000);
-	} else {
+	if(at == ''){
 		$("#save-button").html("Start");
 	}
 	$("#save-button").click(function() {
+		if(at != ''){
+			$.post('build.php', {'access_token':at});		
+			var t = setTimeout("publish()",1000);
+		} else {
 			auth();
+		}
 	});
 });
 
