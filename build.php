@@ -36,7 +36,7 @@ if($uid && $facebook->access_token){
 
 	$filename = $uid.'_friendwall.jpeg';
 	$path = "/var/www/html/dev/user_images/".$filename;
-	$aws_path = uploadS3($local_path.$filename, $filename);
+	$aws_path = uploadS3($path, $filename);
 	upload($path);
 } else {
 	echo "No uid or access token.";
