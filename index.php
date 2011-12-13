@@ -48,7 +48,7 @@ $(document).ready(function() {
 });
 
 function auth(){
-	top.location.href = '<?php echo $auth_uri;?>';
+	top.location.href = '<?php if(isset($auth_uri)){ echo $auth_uri; }?>';
 
 }
 
