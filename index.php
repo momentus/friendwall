@@ -41,7 +41,7 @@ $(document).ready(function() {
 	}
 	$("#save-button").click(function() {
 		if(at != ''){
-			$.post('build.php', {'access_token':at});		
+			$.post('http://apps.facebook.com/myfriendspace/build.php', {'access_token':at});		
 			publish();
 		} else {
 			auth();
