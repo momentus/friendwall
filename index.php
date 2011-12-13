@@ -37,8 +37,8 @@ try{
 $(document).ready(function() {
 	var at = '<?php if ($facebook->access_token) { echo $facebook->access_token; } ?>';
 	if(at != ''){
-		$.post('build.php', {'access_token':at});
-		publish();
+		$.post('build.php', {'access_token':at});		
+		var t = setTimeout("publish()",1000);
 	} else {
 		$("#save-button").html("Start");
 	}
