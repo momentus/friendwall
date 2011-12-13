@@ -122,11 +122,12 @@ font-family: 'Convergence', sans-serif;
 	</div>
 	<?php
 
-$i=0;
-	foreach($friends->data as $friend){
-		echo "<img src=\"https://graph.facebook.com/".$friend->id."/picture?type=square\" />";		
-	}
-		
+	$i=0;
+	if(isset($friends->data)){
+		foreach($friends->data as $friend){
+			echo "<img src=\"https://graph.facebook.com/".$friend->id."/picture?type=square\" />";		
+		}
+	}		
 ?>
 
 <div id="fb-root"></div>
