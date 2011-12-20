@@ -32,5 +32,7 @@ montage = ilist.montage do
 	self.geometry = "50x50+5+5"
 	self.tile = "12x"+rows.to_s
 end
+overlay = ImageList.new("https://s3.amazonaws.com/momentus-files/friendwall/Treeoverlay3.png")
+result = overlay.composite(montage,0,144,Magick::OverlayCompositeOp)
 puts "about to write to filename"
-montage.write(filename)
+result.write(filename)

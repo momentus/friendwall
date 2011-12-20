@@ -22,14 +22,14 @@ try{
 ?>
 <html xmlns:og="http://opengraphprotocol.org/schema/"
       xmlns:fb="http://www.facebook.com/2008/fbml">
-<meta property="og:title" content="My Friends' Space Facewall"/>
+<meta property="og:title" content="Merry Christmas From Momentus"/>
     <meta property="og:type" content="site"/>
     <meta property="og:url" content="http://apps.facebook.com/myfriendspace"/>
-    <meta property="og:image" content="http://apps.facebook.com/myfriendspace/appicon.png"/>
-    <meta property="og:site_name" content="My Friends' Space"/>
+    <meta property="og:image" content="https://s3.amazonaws.com/momentus-files/friendwall/icon.png"/>
+    <meta property="og:site_name" content="My Friend's Christmas"/>
     <meta property="fb:admins" content="561731908"/>
     <meta property="og:description"
-          content="Create a wall of your friends"/>
+          content="Create a Christmas Card of Your Friends"/>
     <meta property="fb:app_id" content="291784860853137" />
 </head>
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.0/jquery.min.js" type="text/javascript"></script>
@@ -57,17 +57,39 @@ function publish(){
 	FB.ui(
   {
     method: 'feed',
-    name: 'Friendwall',
+    name: 'Merry Christmas Friend Card',
     link: 'http://apps.facebook.com/myfriendspace',
-    picture: 'http://friendwall-803401267.us-east-1.elb.amazonaws.com/dev/appicon.png',
-    caption: 'Make a friend poster',
-    description: 'I just made a big image of all my friends. Yep.'
+    picture: 'https://s3.amazonaws.com/momentus-files/friendwall/icon.png',
+    caption: 'Make a card of your friends, for Christmas',
+    description: 'Merry Christmas!'
+  }, function(data){
+  	top.location.href = "http://apps.facebook.com/myfriendspace/done.php";
+  
   });
 }
 </script>
 <link href='http://fonts.googleapis.com/css?family=Convergence' rel='stylesheet' type='text/css'>
 <style type="text/css">
-body {background-color:#000;font-family: 'Convergence', sans-serif;}
+body {background-color:#000;
+	/*font-family: 'Convergence', sans-serif;*/
+	font-family: 'Times Roman', serif;	
+
+	}
+#friendcard{
+	background-position:center;
+	background-repeat:no-repeat;
+   position:absolute;
+  top:150px;
+  left:200px;
+  width:370px;
+}
+#overlay{
+	opacity:50%;
+	z-index:100;
+	position:absolute;
+	top:10px;
+	left:200px;
+}
 a {color:#fff;}
 #friendwall_url {
 	cursor:pointer;
@@ -77,7 +99,8 @@ a {color:#fff;}
 	float:right;}
 img { margin:5; }
 .button {
-font-family: 'Convergence', sans-serif;
+/*font-family: 'Convergence', sans-serif;*/
+	font-family: 'Times Roman',serif;
 	border-radius: 10px;
 	box-shadow: 0 2px 4px rgba(0, 0, 0, 0.6);
 	-moz-border-radius: 10px;
@@ -111,16 +134,18 @@ font-family: 'Convergence', sans-serif;
 	
 }
 #title {
-	color:#fff;
+	color:red;
 	font-size:32px;
 	display:inline;}
 </style>
 <body>
 	<div id="header">
-		<span id="title">FriendWall</span>
+		
 		<div class="button green" id="save-button" style="cursor:pointer;float:right;">Share</div>
 		<img src="loading.gif" style="display:none;float:right;" id="loading" />
 	</div>
+	<div id="overlay"><img src="https://s3.amazonaws.com/momentus-files/friendwall/Treeoverlay3.png" /></div>
+	<div id="friendcard">
 	<?php
 
 	$i=0;
@@ -129,7 +154,7 @@ font-family: 'Convergence', sans-serif;
 			echo "<img src=\"https://graph.facebook.com/".$friend->id."/picture?type=square\" />";		
 		}
 	}		
-?>
+?></div>
 
 <div id="fb-root"></div>
 <script src="all.js"></script>

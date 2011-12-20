@@ -12,20 +12,13 @@ $facebook = new Facebook(array(
 
 
 $facebook->access_token = $_REQUEST["access_token"];
-try{
-	$me = $facebook->api("me");
-	$uid = $me->id;
-} catch (Exception $e){
-	echo $e;	
-}
-
-
+$facebook->getSignedRequest();
+$uid = $facebook->signed_request["user_id"];
 try{
 	$friends = $facebook->api("me/friends",array('limit'=>500));
 } catch (Exception $e){
 	echo $e;	
 }
-
 if($uid && $facebook->access_token){
 	$response = makeRubyFriends($friends);
 	
@@ -47,7 +40,6 @@ function upload($path){
 	$args["message"] = "my friendwall";
 	$args["method"] = "post";
 	$args["image"] = "@".realpath($path);
-	new dBug($args);
 	try {
 		$result = $facebook->api('me/photos', $args);
 	} catch (Exception $e){			
