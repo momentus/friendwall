@@ -11,26 +11,39 @@ $facebook = new Facebook(array(
 ));
 
 
-$facebook->access_token = $_REQUEST["access_token"];
-$facebook->getSignedRequest();
-$uid = $facebook->signed_request["user_id"];
+$facebook->access_token = $_REQUEST["at"];
+try{
+	$me = $facebook->api("me");
+	$uid = $me->id;
+} catch (Exception $e){
+	echo $e;
+}
 try{
 	$friends = $facebook->api("me/friends",array('limit'=>500));
 } catch (Exception $e){
 	echo $e;	
 }
 if($uid && $facebook->access_token){
-	$response = makeRubyFriends($friends);
+	try{
+		$response = makeRubyFriends($friends);
+	} catch (Exception $e){
+		echo $e;
+	}
+	new dBug($response);
 	
 	// upload to amz
-	$s3 = new AmazonS3();
-	$bucket = 'friendwall';
-	$response = $s3->if_bucket_exists($bucket);
-
-	$filename = $uid.'_friendwall.jpeg';
-	$path = "/var/www/html/dev/user_images/".$filename;
-	$aws_path = uploadS3($path, $filename);
-	upload($path);
+	if($response){
+		$s3 = new AmazonS3();
+		$bucket = 'friendwall';
+		$response = $s3->if_bucket_exists($bucket);
+	
+		$filename = $uid.'_friendwall.jpeg';
+		$path = "/var/www/html/dev/user_images/".$filename;
+		$aws_path = uploadS3($path, $filename);
+		upload($path);
+	} else {
+		echo "failure in ruby file: ";
+	}
 } else {
 	echo "No uid or access token.";
 }
@@ -56,6 +69,8 @@ function makeRubyFriends($friends){
 		$i++;
 	}
 	exec($ruby_cmd,$output, $response);	
+	new dBug($output);
+	return $output;
 }
 
 function uploadS3($tmpPath, $fname){

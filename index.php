@@ -22,14 +22,14 @@ try{
 ?>
 <html xmlns:og="http://opengraphprotocol.org/schema/"
       xmlns:fb="http://www.facebook.com/2008/fbml">
-<meta property="og:title" content="Merry Christmas From Momentus"/>
+<meta property="og:title" content="Happy Holidays From Momentus"/>
     <meta property="og:type" content="site"/>
     <meta property="og:url" content="http://apps.facebook.com/myfriendspace"/>
     <meta property="og:image" content="https://s3.amazonaws.com/momentus-files/friendwall/icon.png"/>
-    <meta property="og:site_name" content="My Friend's Christmas"/>
+    <meta property="og:site_name" content="My Friend's Holiday Card"/>
     <meta property="fb:admins" content="561731908"/>
     <meta property="og:description"
-          content="Create a Christmas Card of Your Friends"/>
+          content="Create a Holiday Card of Your Friends"/>
     <meta property="fb:app_id" content="291784860853137" />
 </head>
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.0/jquery.min.js" type="text/javascript"></script>
@@ -41,7 +41,7 @@ $(document).ready(function() {
 	}
 	$("#save-button").click(function() {
 		if(at != ''){
-			$.post('http://apps.facebook.com/myfriendspace/build.php', {'access_token':at});		
+			$.post('http://friendwall-803401267.us-east-1.elb.amazonaws.com/dev/build.php?at='+at);		
 			publish();
 		} else {
 			auth();
@@ -57,11 +57,11 @@ function publish(){
 	FB.ui(
   {
     method: 'feed',
-    name: 'Merry Christmas Friend Card',
+    name: 'Holiday Friend Card',
     link: 'http://apps.facebook.com/myfriendspace',
     picture: 'https://s3.amazonaws.com/momentus-files/friendwall/icon.png',
-    caption: 'Make a card of your friends, for Christmas',
-    description: 'Merry Christmas!'
+    caption: 'Make a card of your friends, for the Holidays',
+    description: 'Happy Hoildays!'
   }, function(data){
   	top.location.href = "http://apps.facebook.com/myfriendspace/done.php";
   
@@ -78,17 +78,17 @@ body {background-color:#000;
 #friendcard{
 	background-position:center;
 	background-repeat:no-repeat;
-   position:absolute;
-  top:150px;
-  left:200px;
-  width:370px;
+  position:absolute;
+  top:373px;
+  left:10px;
+  width:720px;
 }
 #overlay{
 	opacity:50%;
 	z-index:100;
 	position:absolute;
-	top:10px;
-	left:200px;
+	top:70px;
+	left:5px;
 }
 a {color:#fff;}
 #friendwall_url {
@@ -101,11 +101,11 @@ img { margin:5; }
 .button {
 /*font-family: 'Convergence', sans-serif;*/
 	font-family: 'Times Roman',serif;
-	border-radius: 10px;
+	border-radius: 5px;
 	box-shadow: 0 2px 4px rgba(0, 0, 0, 0.6);
-	-moz-border-radius: 10px;
+	-moz-border-radius: 5px;
 	-moz-box-shadow: 0 2px 4px rgba(0, 0, 0, 0.6);
-	-webkit-border-radius: 10px;
+	-webkit-border-radius: 5px;
 	-webkit-box-shadow: 0 2px 4px rgba(0, 0, 0, 0.6);
 	color: #fff;
 	cursor: pointer;

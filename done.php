@@ -47,10 +47,10 @@ h2 {
 </head>
 <body>
 <center>
-<h2>thanks for using our Christmas Card!</h2>
+<h2>Thanks For Using Our Holiday Card!</h2>
 
 <br />
-<div class="fb-like" data-href="http://www.facebook.com/pages/Momentus-Apps/173947455968845" data-send="true" data-width="450" data-show-faces="true"></div>
+<div style="margin-bottom:50px;" class="fb-like" data-href="http://www.facebook.com/pages/Momentus-Apps/173947455968845" data-send="true" data-width="450" data-show-faces="true"></div>
 	<br/>
 	<br/>
 	<div style="position:relative;float:bottom">
