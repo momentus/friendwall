@@ -53,11 +53,11 @@ h2 {
 <div style="margin-bottom:50px;" class="fb-like" data-href="http://www.facebook.com/pages/Momentus-Apps/173947455968845" data-send="true" data-width="450" data-show-faces="true"></div>
 	<br/>
 	<br/>
-	<div style="position:relative;float:bottom">
-	<iframe width="560" height="315" src="http://www.youtube.com/embed/pq8iyhMFLYE" frameborder="0" allowfullscreen></iframe>
+	<div>
+	<center>
+<iframe width='728' height='90' frameborder='no' framespacing='0' scrolling='no'  src='//ads.lfstmedia.com/fbslot/slot5050?ad_size=728x90&adkey=94c'></iframe>
 	</div>
 
-<center>
 	<br/>
 	<br/>
 
